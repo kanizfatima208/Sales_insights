@@ -1,0 +1,56 @@
+              ** Basic Analysis **
+      (Select * will display all the records from the mentioned table)
+Use Sales;
+SELECT * FROM customers; 
+SELECT * FROM date;
+SELECT * FROM markets;
+SELECT * FROM products;
+SELECT * FROM transactions;
+
+        ** Total number of transaction in the sales data **
+    (To find the number of particular record we use COUNT(*))
+SELECT COUNT(*) FROM transactions;
+  
+        ** Total Number of transactions in chennai (market code for chennai is Mark001) **
+SELECT COUNT(*) FROM transactions
+WHERE market_code = 'Mark001";    
+
+       ** Show distict product codes that were sold in Chennai **
+SELECT distict product_code from transactions 
+WHERE market_code = 'Mark001';
+
+        ** Show transactions where currency is in US Dollars **
+SELECT * from transactions 
+WHERE currency = 'USD';
+
+       ** Transactions in the year 2020 joined by date table **
+SELECT * from transactions
+INNER JOIN date on transactions.order_date = date.date
+hWHERE year=2020;
+
+       ** Total Revenue in the year 2020 ** 
+SELECT sum(sales_amount) from transactions
+INNER JOIN date on transactions.order_date = date.date
+WHERE year = 2020;
+
+        ** Total Revenue in the year 2020 in the month of January **
+SELECT sum(sales_amount) from transactions
+INNER JOIN date on transactions.order_date = date.date
+WHERE year = 2020 and month_name = 'January';
+
+       ** Total Revenue in the Year 2019 **
+SELECT sum(sales_amount) from transactions
+INNER JOIN date on transactions.order_date = date.date
+WHERE year = 2019;
+
+        ** Total Revenue of Chennai in 2020 **
+SELECT sum(sales_amount) from transactions
+INNER JOIN date on transactions.order_date = date.date
+WHERE year = 2020 and market_code = 'Mark001';
+
+         ** Distict products sold in Chennai **
+SELECT distict product_code from transactions
+WHERE market_code = 'Mark001';
+
+    **
+    
