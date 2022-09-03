@@ -44,7 +44,7 @@ INNER JOIN date on transactions.order_date = date.date
 WHERE year = 2019;
 
         ** Total Revenue of Chennai in 2020 **
-SELECT sum(sales_amount) from transactions
+SELECT sum(sales_amount) from transactions as Revenue
 INNER JOIN date on transactions.order_date = date.date
 WHERE year = 2020 and market_code = 'Mark001';
 
@@ -52,5 +52,6 @@ WHERE year = 2020 and market_code = 'Mark001';
 SELECT distict product_code from transactions
 WHERE market_code = 'Mark001';
 
-    **
+    ** ADVANCED ANALYSIS **
+    ** Revenue breakdown by cities **
     
