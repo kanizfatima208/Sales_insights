@@ -54,4 +54,33 @@ WHERE market_code = 'Mark001';
 
     ** ADVANCED ANALYSIS **
     ** Revenue breakdown by cities **
-    
+SELECT markets.markets_name, transactions.sales_amount
+FROM transactions
+INNER JOIN markets on transactions.market_code = markets.market_code
+ORDER BY sales_amount DESC;
+
+      
+   **  Revenue breakdown by years and months **
+SELECT date.date_yy_mmm, transactions.sales_amount
+FROM transactions
+INNER JOIN date on transactions.order_date = date.date
+ORDER BY sales_amount DESC;
+
+   ** Top 5 customers by Revenue **
+SELECT customers.customer_name, transactions.sales_amount
+FROM transactions
+INNER JOIN customers on transactions.customer_code = customers.customer_code
+ORDER BY sales_amount DESC
+LIMIT 5;
+
+  ** Top 5 products by Revenue **
+SELECT product_code, sales_amount 
+FROM transactions
+ORDER BY sales_amount DESC
+LIMIT 5;
+
+   ** Total Revenue in January 2020 **
+SELECT sum(sales_amount)
+FROM transactions
+INNER JOIN date on transactions.order_date = date.date
+WHERE year = 2020 and month_name ='January';
